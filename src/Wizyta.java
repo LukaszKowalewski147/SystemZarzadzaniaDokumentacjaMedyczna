@@ -1,0 +1,2 @@
+public class Wizyta {
+}
