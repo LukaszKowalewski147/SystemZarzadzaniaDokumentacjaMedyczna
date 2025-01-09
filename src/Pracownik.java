@@ -1,2 +1,2 @@
-public class Pracownik extends UżytkownikSystemu {
+public abstract class Pracownik extends UżytkownikSystemu {
 }

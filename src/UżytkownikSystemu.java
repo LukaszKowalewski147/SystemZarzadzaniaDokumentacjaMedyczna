@@ -1,2 +1,2 @@
-public class UżytkownikSystemu {
+public abstract class UżytkownikSystemu {
 }

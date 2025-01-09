@@ -1,2 +1,2 @@
-public class Nośnik {
+public abstract class Nośnik {
 }
