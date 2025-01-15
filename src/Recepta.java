@@ -2,14 +2,14 @@ import java.util.Date;
 
 public class Recepta extends Dokument {
 
-    private Date dataWażności;
+    private Date dataWaznosci;
     private String dawkowanie;
     private String leki;
 
     public Recepta(Date dataWystawienia, String nazwaJednostkiMedycznej,
-                   Date dataWażności, String dawkowanie, String leki) {
+                   Date dataWaznosci, String dawkowanie, String leki) {
         super(dataWystawienia, nazwaJednostkiMedycznej);
-        this.dataWażności = dataWażności;
+        this.dataWaznosci = dataWaznosci;
         this.dawkowanie = dawkowanie;
         this.leki = leki;
     }

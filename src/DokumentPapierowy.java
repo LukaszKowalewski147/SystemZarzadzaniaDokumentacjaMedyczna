@@ -6,7 +6,7 @@ public class DokumentPapierowy extends Nosnik {
         this.numerDruku = numerDruku;
     }
 
-    public void czyNośnikDostępny() {
+    public void czyNosnikDostepny() {
 
     }
 }

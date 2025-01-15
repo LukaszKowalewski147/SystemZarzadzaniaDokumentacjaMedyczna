@@ -2,7 +2,7 @@ import java.util.Date;
 
 public class Wizyta {
 
-    private int maksymalneSpóźnienie = 15;      //min
+    private int maksymalneSpoznienie = 15;      //min
     private StatusWizyty statusWizyty = StatusWizyty.ZAPLANOWANA;
     private Date data;
     private int ocena;

@@ -3,13 +3,13 @@ import java.util.Date;
 public class Skierowanie extends Dokument {
 
     private String typBadania;
-    private Date dataWażności;
+    private Date dataWaznosci;
 
     public Skierowanie(Date dataWystawienia, String nazwaJednostkiMedycznej,
-                       String typBadania, Date dataWażności) {
+                       String typBadania, Date dataWaznosci) {
         super(dataWystawienia, nazwaJednostkiMedycznej);
         this.typBadania = typBadania;
-        this.dataWażności = dataWażności;
+        this.dataWaznosci = dataWaznosci;
     }
 
     @Override

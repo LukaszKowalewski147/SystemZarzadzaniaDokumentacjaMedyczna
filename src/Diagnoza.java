@@ -2,12 +2,12 @@ import java.util.Date;
 
 public class Diagnoza extends Dokument {
 
-    private String dolegliwości;
+    private String dolegliwosci;
 
     public Diagnoza(Date dataWystawienia, String nazwaJednostkiMedycznej,
-                    String dolegliwości) {
+                    String dolegliwosci) {
         super(dataWystawienia, nazwaJednostkiMedycznej);
-        this.dolegliwości = dolegliwości;
+        this.dolegliwosci = dolegliwosci;
     }
 
     @Override

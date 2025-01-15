@@ -3,8 +3,8 @@ import java.util.Date;
 public class Leczenie {
 
     private String choroba;
-    private Date dataRozpoczęcia;
-    private Date dataZakończenia;
+    private Date dataRozpoczecia;
+    private Date dataZakonczenia;
 
     public Leczenie(String choroba) {
         this.choroba = choroba;
