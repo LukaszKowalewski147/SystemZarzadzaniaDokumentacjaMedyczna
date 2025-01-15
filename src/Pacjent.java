@@ -1,29 +1,29 @@
 import java.util.Date;
 
-public class Pacjent extends UżytkownikSystemu {
+public class Pacjent extends UzytkownikSystemu {
 
-    private String płeć;
+    private String plec;
     private Date dataUrodzenia;
     private int PESEL;
     private String adres;
     private String rodzajUbezpieczenia;
 
-    public Pacjent(String imię, String nazwisko, String numerTelefonu,
+    public Pacjent(String imie, String nazwisko, String numerTelefonu,
                    String adres, Date dataUrodzenia, int PESEL,
-                   String płeć, String rodzajUbezpieczenia) {
-        super(imię, nazwisko, numerTelefonu);
+                   String plec, String rodzajUbezpieczenia) {
+        super(imie, nazwisko, numerTelefonu);
         this.adres = adres;
         this.dataUrodzenia = dataUrodzenia;
         this.PESEL = PESEL;
-        this.płeć = płeć;
+        this.plec = plec;
         this.rodzajUbezpieczenia = rodzajUbezpieczenia;
     }
 
-    public void przeglądajKalendarzWizyt() {
+    public void przegladajKalendarzWizyt() {
 
     }
 
-    public void umówWizytę() {
+    public void umowWizyte() {
 
     }
 

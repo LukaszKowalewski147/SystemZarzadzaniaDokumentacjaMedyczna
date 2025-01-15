@@ -1,11 +1,11 @@
-public abstract class Pracownik extends UżytkownikSystemu {
+public abstract class Pracownik extends UzytkownikSystemu {
 
     private String email;
     private String godzinyPracy;
 
-    public Pracownik(String imię, String nazwisko, String numerTelefonu,
+    public Pracownik(String imie, String nazwisko, String numerTelefonu,
                      String email, String godzinyPracy) {
-        super(imię, nazwisko, numerTelefonu);
+        super(imie, nazwisko, numerTelefonu);
         this.email = email;
         this.godzinyPracy = godzinyPracy;
     }

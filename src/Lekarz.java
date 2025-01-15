@@ -4,16 +4,16 @@ public class Lekarz extends Pracownik {
     private String specjalizacja;
     private String numerGabinetu;
 
-    public Lekarz(String imię, String nazwisko, String numerTelefonu,
+    public Lekarz(String imie, String nazwisko, String numerTelefonu,
                   String email, String godzinyPracy, String numerPWZ,
                   String specjalizacja, String numerGabinetu) {
-        super(imię, nazwisko, numerTelefonu, email, godzinyPracy);
+        super(imie, nazwisko, numerTelefonu, email, godzinyPracy);
         this.numerPWZ = numerPWZ;
         this.specjalizacja = specjalizacja;
         this.numerGabinetu = numerGabinetu;
     }
 
-    public void wyświetlPubliczneDaneOsobowe() {
+    public void wyswietlPubliczneDaneOsobowe() {
 
     }
 }

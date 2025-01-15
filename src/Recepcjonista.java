@@ -2,9 +2,9 @@ public class Recepcjonista extends Pracownik {
 
     private String numerStanowiska;
 
-    public Recepcjonista(String imię, String nazwisko, String numerTelefonu,
+    public Recepcjonista(String imie, String nazwisko, String numerTelefonu,
                          String email, String godzinyPracy, String numerStanowiska) {
-        super(imię, nazwisko, numerTelefonu, email, godzinyPracy);
+        super(imie, nazwisko, numerTelefonu, email, godzinyPracy);
         this.numerStanowiska = numerStanowiska;
     }
 
