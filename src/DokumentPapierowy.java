@@ -1,4 +1,4 @@
-public class DokumentPapierowy extends Nośnik {
+public class DokumentPapierowy extends Nosnik {
 
     private long numerDruku;
 

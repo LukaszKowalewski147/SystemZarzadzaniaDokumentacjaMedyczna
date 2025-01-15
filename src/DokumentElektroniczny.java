@@ -1,4 +1,4 @@
-public class DokumentElektroniczny extends Nośnik {
+public class DokumentElektroniczny extends Nosnik {
 
     private String podpisElektroniczny;
 

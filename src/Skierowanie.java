@@ -13,7 +13,7 @@ public class Skierowanie extends Dokument {
     }
 
     @Override
-    public void wyświetlOpis() {
+    public void wyswietlOpis() {
 
     }
 }

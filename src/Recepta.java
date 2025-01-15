@@ -15,7 +15,7 @@ public class Recepta extends Dokument {
     }
 
     @Override
-    public void wyświetlOpis() {
+    public void wyswietlOpis() {
 
     }
 }
