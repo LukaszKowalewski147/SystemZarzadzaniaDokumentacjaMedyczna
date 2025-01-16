@@ -15,7 +15,9 @@ public class Pacjent extends UzytkownikSystemu {
     public Pacjent(String imie, String nazwisko, String numerTelefonu,
                    String adres, Date dataUrodzenia, int PESEL,
                    String plec, String rodzajUbezpieczenia) {
+        //  Wywolanie konstruktora klasy nadrzednej UzytkownikSystemu
         super(imie, nazwisko, numerTelefonu);
+
         this.adres = adres;
         this.dataUrodzenia = dataUrodzenia;
         this.PESEL = PESEL;
@@ -25,7 +27,7 @@ public class Pacjent extends UzytkownikSystemu {
 
     //  Metoda dodajaca leczenie do kontenera "leczenia" wywolywana w konstruktorze leczenia
     public void dodajLeczenie(Leczenie leczenie) {
-        // Sprawdz czy to leczenie nie zostalo dodane do tego pacjenta
+        //  Sprawdz czy to leczenie nie zostalo dodane do tego pacjenta
         if (!leczenia.contains(leczenie)) {
             leczenia.add(leczenie);
         }

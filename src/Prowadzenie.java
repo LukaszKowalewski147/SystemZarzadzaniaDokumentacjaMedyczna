@@ -13,7 +13,7 @@ public class Prowadzenie {
         this.leczenie = leczenie;
         this.lekarzProwadzacy = lekarzProwadzacy;
 
-        // Dodanie prowadzenia do kontenera "prowadzenia" lekarza prowadzacego
+        //  Dodanie prowadzenia do kontenera "prowadzenia" lekarza prowadzacego
         lekarzProwadzacy.dodajProwadzenie(this);
     }
 }

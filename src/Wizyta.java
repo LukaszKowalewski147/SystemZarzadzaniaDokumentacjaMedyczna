@@ -7,25 +7,27 @@ public class Wizyta {
     private Date data;
     private int ocena;
 
-    //  Asocjacja lekarza przeprowadzajacego wizyte
+    //  Asocjacja jednego lekarza przeprowadzajacego jedna wizyte
     private Lekarz lekarz;
 
-    //  Leczenie z ktorym powiazana jest wizyta
+    //  Leczenie w ktorym skomponowana jest wizyta
     private Leczenie leczenie;
 
+    //  Chroniony konstruktor wywolywany przez metode utworzWizyte() i klasy dziedziczace
     protected Wizyta(Leczenie leczenie, Lekarz lekarz) {
         this.leczenie = leczenie;
         this.lekarz = lekarz;
     }
 
+    //  Metoda tworzaca wizyte i dodajaca ja do leczenia
     public static Wizyta utworzWizyte(Leczenie leczenie, Lekarz lekarz) {
         if (leczenie == null) {
             System.out.println("Leczenie nie istnieje!");
             return null;
         }
-        // Utworz nowa wizyte
+        //  Utworz nowa wizyte
         Wizyta wizyta = new Wizyta(leczenie, lekarz);
-        // Dodaj wizyte do leczenia
+        //  Dodaj wizyte do leczenia
         try {
             leczenie.dodajWizyte(wizyta);
         } catch (Exception e) {

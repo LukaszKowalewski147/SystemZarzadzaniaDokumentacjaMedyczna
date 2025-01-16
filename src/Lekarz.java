@@ -7,7 +7,9 @@ public class Lekarz extends Pracownik {
     public Lekarz(String imie, String nazwisko, String numerTelefonu,
                   String email, String godzinyPracy, String numerPWZ,
                   String specjalizacja, String numerGabinetu) {
+        //  Wywolanie konstruktora klasy nadrzednej Pracownik
         super(imie, nazwisko, numerTelefonu, email, godzinyPracy);
+
         this.numerPWZ = numerPWZ;
         this.specjalizacja = specjalizacja;
         this.numerGabinetu = numerGabinetu;

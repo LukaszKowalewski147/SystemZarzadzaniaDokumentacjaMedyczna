@@ -8,12 +8,15 @@ public class Recepta extends Dokument {
 
     public Recepta(Date dataWystawienia, String nazwaJednostkiMedycznej,
                    Date dataWaznosci, String dawkowanie, String leki) {
+        //  Wywolanie konstruktora klasy nadrzednej Dokument
         super(dataWystawienia, nazwaJednostkiMedycznej);
+
         this.dataWaznosci = dataWaznosci;
         this.dawkowanie = dawkowanie;
         this.leki = leki;
     }
 
+    //  Implementacja metody abstrakcyjnej wyswietlOpis() klasy Dokument
     @Override
     public void wyswietlOpis() {
 

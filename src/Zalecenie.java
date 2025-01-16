@@ -6,10 +6,13 @@ public class Zalecenie extends Dokument {
 
     public Zalecenie(Date dataWystawienia, String nazwaJednostkiMedycznej,
                      String poradaMedyczna) {
+        //  Wywolanie konstruktora klasy nadrzednej Dokument
         super(dataWystawienia, nazwaJednostkiMedycznej);
+
         this.poradaMedyczna = poradaMedyczna;
     }
 
+    //  Implementacja metody abstrakcyjnej wyswietlOpis() klasy Dokument
     @Override
     public void wyswietlOpis() {
 
