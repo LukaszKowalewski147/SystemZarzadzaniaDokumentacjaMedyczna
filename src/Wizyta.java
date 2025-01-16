@@ -7,7 +7,11 @@ public class Wizyta {
     private Date data;
     private int ocena;
 
-    public Wizyta() {
+    //  Asocjacja lekarza przeprowadzajacego wizyte
+    private Lekarz lekarz;
+
+    public Wizyta(Lekarz lekarz) {
         // TODO: this.data = data teraz
+        this.lekarz = lekarz;
     }
 }
