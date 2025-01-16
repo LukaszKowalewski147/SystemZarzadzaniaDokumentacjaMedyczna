@@ -21,6 +21,9 @@ public class Leczenie {
         this.choroba = choroba;
         this.pacjent = pacjent;
         this.prowadzenie = prowadzenie;
+
+        // Dodanie leczenia do kontenera "leczenia" pacjenta
+        pacjent.dodajLeczenie(this);
     }
 
     public void dodajWizyte(Wizyta wizyta) throws Exception {

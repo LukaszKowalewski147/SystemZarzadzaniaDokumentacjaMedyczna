@@ -12,5 +12,8 @@ public class Prowadzenie {
     public Prowadzenie(Leczenie leczenie, LekarzProwadzacy lekarzProwadzacy) {
         this.leczenie = leczenie;
         this.lekarzProwadzacy = lekarzProwadzacy;
+
+        // Dodanie prowadzenia do kontenera "prowadzenia" lekarza prowadzacego
+        lekarzProwadzacy.dodajProwadzenie(this);
     }
 }
