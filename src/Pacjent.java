@@ -23,6 +23,7 @@ public class Pacjent extends UzytkownikSystemu {
         this.PESEL = PESEL;
         this.plec = plec;
         this.rodzajUbezpieczenia = rodzajUbezpieczenia;
+        leczenia = new ArrayList<Leczenie>();
     }
 
     //  Metoda dodajaca leczenie do kontenera "leczenia" wywolywana w konstruktorze leczenia

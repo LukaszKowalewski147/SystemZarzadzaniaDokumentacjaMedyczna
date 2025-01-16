@@ -23,6 +23,7 @@ public class Leczenie {
         this.choroba = choroba;
         this.pacjent = pacjent;
         this.prowadzenie = prowadzenie;
+        wizyty = new ArrayList<Wizyta>();
 
         //  Dodanie leczenia do kontenera "leczenia" pacjenta
         pacjent.dodajLeczenie(this);

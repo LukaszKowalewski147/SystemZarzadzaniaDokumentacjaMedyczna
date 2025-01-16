@@ -15,6 +15,7 @@ public class LekarzProwadzacy extends Lekarz {
         super(imie, nazwisko, numerTelefonu, email, godzinyPracy, numerPWZ, specjalizacja, numerGabinetu);
 
         this.numerPierwszegoKontaktu = numerPierwszegoKontaktu;
+        prowadzenia = new ArrayList<Prowadzenie>();
     }
 
     //  Metoda dodajaca prowadzenie do kontenera "prowadzenia" wywolywana w konstruktorze prowadzenia
