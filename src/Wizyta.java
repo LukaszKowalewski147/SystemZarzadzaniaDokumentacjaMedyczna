@@ -10,8 +10,28 @@ public class Wizyta {
     //  Asocjacja lekarza przeprowadzajacego wizyte
     private Lekarz lekarz;
 
-    public Wizyta(Lekarz lekarz) {
-        // TODO: this.data = data teraz
+    //  Leczenie z ktorym powiazana jest wizyta
+    private Leczenie leczenie;
+
+    protected Wizyta(Leczenie leczenie, Lekarz lekarz) {
+        this.leczenie = leczenie;
         this.lekarz = lekarz;
+    }
+
+    public static Wizyta utworzWizyte(Leczenie leczenie, Lekarz lekarz) {
+        if (leczenie == null) {
+            System.out.println("Leczenie nie istnieje!");
+            return null;
+        }
+        // Utworz nowa wizyte
+        Wizyta wizyta = new Wizyta(leczenie, lekarz);
+        // Dodaj wizyte do leczenia
+        try {
+            leczenie.dodajWizyte(wizyta);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+        return wizyta;
     }
 }
