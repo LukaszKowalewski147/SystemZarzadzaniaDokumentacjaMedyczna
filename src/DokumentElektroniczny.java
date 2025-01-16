@@ -8,7 +8,7 @@ public class DokumentElektroniczny extends Nosnik {
     }
 
     public static DokumentElektroniczny utworzDokumentElektroniczny(Dokument dokument, String podpisElektroniczny) {
-        if(dokument == null) {
+        if (dokument == null) {
             System.out.println("Dokument nie istnieje!");
             return null;
         }

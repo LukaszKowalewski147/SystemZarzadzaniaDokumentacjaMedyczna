@@ -8,7 +8,7 @@ public class DokumentPapierowy extends Nosnik {
     }
 
     public static DokumentPapierowy utworzDokumentPapierowy(Dokument dokument, long numerDruku) {
-        if(dokument == null) {
+        if (dokument == null) {
             System.out.println("Dokument nie istnieje!");
             return null;
         }

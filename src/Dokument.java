@@ -33,7 +33,7 @@ public abstract class Dokument {
     public void nadajNosnik(Nosnik nosnik) throws Exception {
         // Sprawdz czy ten nosnik nie zostal dodany do jakiegos dokumentu
         if (wszystkieNosniki.contains(nosnik)) {
-            throw new Exception("Ten nosnik jest juz powiazany z innym dokumentem!");
+            throw new Exception("Ten nosnik jest juz powiazany z jakims dokumentem!");
         }
         this.nosnik = nosnik;
         // Zapamietaj na liscie wszystkich nosnikow (przeciwdziala wspoldzielniu nosnikow)
