@@ -29,7 +29,7 @@ public class DokumentPapierowy extends Nosnik {
         return dokumentPapierowy;
     }
 
-    public void czyNosnikDostepny() {
-
+    public boolean czyNosnikDostepny() {
+        return false;
     }
 }

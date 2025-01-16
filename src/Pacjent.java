@@ -34,15 +34,39 @@ public class Pacjent extends UzytkownikSystemu {
         }
     }
 
-    public void przegladajKalendarzWizyt() {
+    public Wizyta[] przegladajKalendarzWizyt() {
+        return null;
+    }
+
+    public boolean umowWizyte(Lekarz lekarz, Date data) {
+        return false;
+    }
+
+    public Leczenie wyszukajLeczenie(String choroba) {
+        return null;
+    }
+
+    public void zalozLeczenie() {
 
     }
 
-    public void umowWizyte() {
+    public Leczenie wybierzLeczenie() {
+        return null;
+    }
+
+    public Lekarz wybierzLekarza() {
+        return null;
+    }
+
+    public void wybierzDateKonsultacji() {
 
     }
 
-    public void wyszukajLeczenie() {
+    public void wybierzGodzineKonsultacji() {
+
+    }
+
+    public void zapiszKonsultacjeOnline() {
 
     }
 }

@@ -26,7 +26,7 @@ public class LekarzProwadzacy extends Lekarz {
         }
     }
 
-    public void zakonczLeczenie() {
-
+    public boolean zakonczLeczenie(Leczenie leczenie) {
+        return false;
     }
 }

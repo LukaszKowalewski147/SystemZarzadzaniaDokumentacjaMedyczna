@@ -7,6 +7,7 @@ public class Leczenie {
     private String choroba;
     private Date dataRozpoczecia;
     private Date dataZakonczenia;
+    private boolean czyZarchiwizowane;
 
     //  Asocjacja leczenia jednego pacjenta
     private Pacjent pacjent;
@@ -23,6 +24,7 @@ public class Leczenie {
         this.choroba = choroba;
         this.pacjent = pacjent;
         this.prowadzenie = prowadzenie;
+        czyZarchiwizowane = false;
         wizyty = new ArrayList<Wizyta>();
 
         //  Dodanie leczenia do kontenera "leczenia" pacjenta
@@ -44,10 +46,14 @@ public class Leczenie {
     }
 
     public void zarchiwizuj() {
-
+        czyZarchiwizowane = true;
     }
 
-    public void generujRaport() {
+    public String generujRaport() {
+        return "raport";
+    }
 
+    public void zalozLeczenie() {
+        // TODO: zakladanie tutaj lub u pacjenta
     }
 }

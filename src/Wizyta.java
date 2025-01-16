@@ -2,10 +2,10 @@ import java.util.Date;
 
 public class Wizyta {
 
-    private int maksymalneSpoznienie = 15;      //min
+    private int maksymalneSpoznienie = 15;      //w minutach
     private StatusWizyty statusWizyty = StatusWizyty.ZAPLANOWANA;
     private Date data;
-    private int ocena;
+    private short ocena;
 
     //  Asocjacja jednego lekarza przeprowadzajacego jedna wizyte
     private Lekarz lekarz;
@@ -35,5 +35,13 @@ public class Wizyta {
             return null;
         }
         return wizyta;
+    }
+
+    public void ocenWizyte(short ocena) {
+        this.ocena = ocena;
+    }
+
+    public void generujDokument() {
+
     }
 }

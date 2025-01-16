@@ -29,7 +29,7 @@ public class DokumentElektroniczny extends Nosnik {
         return dokumentElektroniczny;
     }
 
-    public void podpisz() {
-
+    public boolean podpisz() {
+        return false;
     }
 }

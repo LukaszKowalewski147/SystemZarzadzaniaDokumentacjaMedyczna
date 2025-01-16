@@ -3,6 +3,7 @@ public class Lekarz extends Pracownik {
     private String numerPWZ;
     private String specjalizacja;
     private String numerGabinetu;
+    private String dostepnoscLekarza; //????????
 
     public Lekarz(String imie, String nazwisko, String numerTelefonu,
                   String email, String godzinyPracy, String numerPWZ,

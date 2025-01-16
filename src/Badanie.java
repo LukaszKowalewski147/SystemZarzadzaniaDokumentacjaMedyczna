@@ -31,4 +31,8 @@ public class Badanie extends Wizyta {
         }
         return badanie;
     }
+
+    public void zapiszBadanieWKalendarzu() {
+
+    }
 }
