@@ -2,11 +2,11 @@ import java.util.Date;
 
 public class Diagnoza extends Dokument {
 
-    private String dolegliwosci;
+    private String[] dolegliwosci;
 
     //  Prywatny konstruktor dostepny tylko z metody utworzDiagnoze()
     private Diagnoza(Wizyta wizyta, Date dataWystawienia, String nazwaJednostkiMedycznej,
-                     String dolegliwosci) {
+                     String[] dolegliwosci) {
         //  Wywolanie konstruktora klasy nadrzednej Dokument
         super(wizyta, dataWystawienia, nazwaJednostkiMedycznej);
 
@@ -15,7 +15,7 @@ public class Diagnoza extends Dokument {
 
     //  Metoda tworzaca diagnoze
     public static Diagnoza utworzDiagnoze(Wizyta wizyta, Date dataWystawienia, String nazwaJednostkiMedycznej,
-                                          String dolegliwosci) {
+                                          String[] dolegliwosci) {
         //  Sprawdzenie czy wizyta istnieje
         if (wizyta == null) {
             System.out.println("Wizyta nie istnieje!");

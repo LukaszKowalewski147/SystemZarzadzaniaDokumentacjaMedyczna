@@ -7,7 +7,7 @@ public class Wizyta {
     private int maksymalneSpoznienie = 15;      //w minutach
     private StatusWizyty statusWizyty = StatusWizyty.ZAPLANOWANA;
     private Date termin;
-    private short ocena;
+    private short ocena = -1;
 
     //  Asocjacja jednego lekarza przeprowadzajacego wizyte
     private Lekarz lekarz;
@@ -29,7 +29,6 @@ public class Wizyta {
         this.lekarz = lekarz;
         this.termin = termin;
         dokumenty = new ArrayList<Dokument>();
-        ocena = -1;
 
         //  Dodanie wizyty do kontenera "wizyty" lekarza
         lekarz.dodajWizyte(this);
@@ -103,7 +102,7 @@ public class Wizyta {
                 dokument = WynikBadania.utworzWynikBadania(this, termin, "nazwa_jednostki", "typ_badania", "opis");
                 break;
             case 2:
-                dokument = Diagnoza.utworzDiagnoze(this, termin, "nazwa_jednostki", "dolegliwosci");
+                dokument = Diagnoza.utworzDiagnoze(this, termin, "nazwa_jednostki", new String[]{"bol", "skurcz"});
                 break;
             case 3:
                 dokument = Recepta.utworzRecepte(this, termin, "nazwa_jednostki", null, "dawkowanie", "lek1,lek2");
@@ -117,5 +116,14 @@ public class Wizyta {
             return;
 
         dokument.wybierzNosnik();
+    }
+
+    public void zmienStatusWizyty(StatusWizyty status) {
+        statusWizyty = status;
+    }
+
+    public String pobierzInformacjeOWizycie() {
+        String danePacjenta; // TODO: zwrocic dane o wizycie
+        return "";
     }
 }

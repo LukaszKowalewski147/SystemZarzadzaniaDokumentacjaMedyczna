@@ -4,6 +4,7 @@ public class Badanie extends Wizyta {
 
     private String rodzajBadania;
     private String opisWymaganegoPrzygotowania;
+    private boolean zrealizowane = false;
 
     //  Prywatny konstruktor dostepny tylko z metody utworzBadanie()
     private Badanie(Leczenie leczenie, Lekarz lekarz,
@@ -39,5 +40,9 @@ public class Badanie extends Wizyta {
 
     public void zapiszBadanieWKalendarzu() {
 
+    }
+
+    public void zmienStatusNaZrealizowane() {
+        zrealizowane = true;
     }
 }

@@ -8,6 +8,7 @@ public class Pacjent extends UzytkownikSystemu {
     private long PESEL;
     private String adres;
     private String rodzajUbezpieczenia;
+    private boolean wyrejestrowany = false;
 
     //  Asocjacja wielu leczen pacjenta
     private ArrayList<Leczenie> leczenia;
@@ -104,5 +105,9 @@ public class Pacjent extends UzytkownikSystemu {
 
     public Leczenie zalozLeczenie() {
         return new Leczenie("choroba", this);
+    }
+
+    public void wyrejestrujKonto() {
+        wyrejestrowany = true;
     }
 }

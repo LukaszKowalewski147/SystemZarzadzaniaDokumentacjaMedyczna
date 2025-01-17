@@ -35,6 +35,10 @@ public class Skierowanie extends Dokument {
         return skierowanie;
     }
 
+    public String pobierzInformacjeOSkierowaniu() {
+        return typBadania + "\nWazne do: " + dataWaznosci.toString();
+    }
+
     //  Implementacja metody abstrakcyjnej pobierzOpis() klasy Dokument
     @Override
     public String pobierzOpis() {
