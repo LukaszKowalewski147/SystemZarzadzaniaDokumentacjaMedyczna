@@ -6,12 +6,17 @@ public abstract class Dokument {
     private Date dataWystawienia;
     private String nazwaJednostkiMedycznej;
 
+    //  Wizyta w ktorej skomponowany jest dokument
+    private Wizyta wizyta;
+
     //  Ekstensja klasy Nosnik
     private static HashSet<Nosnik> wszystkieNosniki = new HashSet<Nosnik>();
     //  Kompozycja jednego nosnika dokumentu
     private Nosnik nosnik;
 
-    public Dokument(Date dataWystawienia, String nazwaJednostkiMedycznej) {
+    //  Chroniony konstruktor wywolywany tylko przez klasy dziedziczace
+    protected Dokument(Wizyta wizyta, Date dataWystawienia, String nazwaJednostkiMedycznej) {
+        this.wizyta = wizyta;
         this.dataWystawienia = dataWystawienia;
         this.nazwaJednostkiMedycznej = nazwaJednostkiMedycznej;
     }
@@ -45,6 +50,6 @@ public abstract class Dokument {
         wszystkieNosniki.add(nosnik);
     }
 
-    // TODO: w komentarzu implementacji zmienic nazwe metody
+    //  Metoda abstrakcyjna implementowana przez wszystkie klasy dziedziczace
     public abstract String pobierzOpis();
 }

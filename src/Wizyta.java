@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 
 public class Wizyta {
 
@@ -13,11 +15,17 @@ public class Wizyta {
     //  Leczenie w ktorym skomponowana jest wizyta
     private Leczenie leczenie;
 
+    //  Ekstensja klasy Dokument
+    private static HashSet<Dokument> wszystkieDokumenty = new HashSet<Dokument>();
+    //  Kompozycja wielu dokumentow jednej wizyty
+    private ArrayList<Dokument> dokumenty;
+
     //  Chroniony konstruktor wywolywany przez metode utworzWizyte() i klasy dziedziczace
     protected Wizyta(Leczenie leczenie, Lekarz lekarz, Date termin) {
         this.leczenie = leczenie;
         this.lekarz = lekarz;
         this.termin = termin;
+        dokumenty = new ArrayList<Dokument>();
     }
 
     //  Metoda tworzaca wizyte i dodajaca ja do leczenia
@@ -38,6 +46,20 @@ public class Wizyta {
         return wizyta;
     }
 
+    //  Metoda dodajaca dokument do kontenera "dokumenty" wywolywana podczas tworzenia dokumentu
+    public void dodajDokument(Dokument dokument) throws Exception {
+        //  Sprawdz czy ten dokument nie zostal dodany do tej wizyty
+        if (!dokumenty.contains(dokument)) {
+            //  Sprawdz czy ten dokument nie zostal dodany do innej wizyty
+            if (wszystkieDokumenty.contains(dokument)) {
+                throw new Exception("Ten dokument jest juz powiazany z inna wizyta!");
+            }
+            dokumenty.add(dokument);
+            //  Zapamietaj na liscie wszystkich dokumentow (przeciwdziala wspoldzielniu dokumentow)
+            wszystkieDokumenty.add(dokument);
+        }
+    }
+
     public void ocenWizyte(short ocena) {
         this.ocena = ocena;
     }
@@ -50,19 +72,19 @@ public class Wizyta {
         int typDokumentu = 0;
         switch (typDokumentu) {
             case 0:
-                dokument = new Skierowanie(termin, "nazwa_jednostki", "typ_badania", null);
+                dokument = Skierowanie.utworzSkierowanie(this, termin, "nazwa_jednostki", "typ_badania", null);
                 break;
             case 1:
-                dokument = new WynikBadania(termin, "nazwa_jednostki", "typ_badania", "opis");
+                dokument = WynikBadania.utworzWynikBadania(this, termin, "nazwa_jednostki", "typ_badania", "opis");
                 break;
             case 2:
-                dokument = new Diagnoza(termin, "nazwa_jednostki", "dolegliwosci");
+                dokument = Diagnoza.utworzDiagnoze(this, termin, "nazwa_jednostki", "dolegliwosci");
                 break;
             case 3:
-                dokument = new Recepta(termin, "nazwa_jednostki", null, "dawkowanie", "lek1,lek2");
+                dokument = Recepta.utworzRecepte(this, termin, "nazwa_jednostki", null, "dawkowanie", "lek1,lek2");
                 break;
             case 4:
-                dokument = new Zalecenie(termin, "nazwa_jednostki", "porada_medyczna");
+                dokument = Zalecenie.utworzZalecenie(this, termin, "nazwa_jednostki", "porada_medyczna");
                 break;
         }
 
