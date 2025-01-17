@@ -20,12 +20,16 @@ public class Wizyta {
     //  Kompozycja wielu dokumentow jednej wizyty
     private ArrayList<Dokument> dokumenty;
 
+    //  Ekstensja klasy Wizyta
+    private static HashSet<Wizyta> wszystkieWizyty = new HashSet<Wizyta>();
+
     //  Chroniony konstruktor wywolywany przez metode utworzWizyte() i klasy dziedziczace
     protected Wizyta(Leczenie leczenie, Lekarz lekarz, Date termin) {
         this.leczenie = leczenie;
         this.lekarz = lekarz;
         this.termin = termin;
         dokumenty = new ArrayList<Dokument>();
+        ocena = -1;
 
         //  Dodanie wizyty do kontenera "wizyty" lekarza
         lekarz.dodajWizyte(this);
@@ -61,6 +65,24 @@ public class Wizyta {
             //  Zapamietaj na liscie wszystkich dokumentow (przeciwdziala wspoldzielniu dokumentow)
             wszystkieDokumenty.add(dokument);
         }
+    }
+
+    //  Metoda obliczajaca srednia ocen ze wszystkich wizyt posiadajacych ocene
+    public static float obliczSredniaOcen() {
+        float srednia = -1.0f;
+        float sumaOcen = 0;
+        int iloscOcen = 0;
+
+        for (Wizyta wizyta : wszystkieWizyty) {
+            if (wizyta.ocena < 0)
+                continue;
+            sumaOcen += wizyta.ocena;
+            ++iloscOcen;
+        }
+        if (iloscOcen > 0)
+            srednia = sumaOcen / iloscOcen;
+
+        return srednia;
     }
 
     public void ocenWizyte(short ocena) {
