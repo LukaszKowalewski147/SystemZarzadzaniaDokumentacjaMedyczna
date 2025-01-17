@@ -12,12 +12,15 @@ public class Prowadzenie {
     public Prowadzenie(Leczenie leczenie, LekarzProwadzacy lekarzProwadzacy) {
         this.leczenie = leczenie;
         this.lekarzProwadzacy = lekarzProwadzacy;
+        czyAktywne = true;
 
         //  Dodanie prowadzenia do kontenera "prowadzenia" lekarza prowadzacego
         lekarzProwadzacy.dodajProwadzenie(this);
     }
 
     public boolean zakonczLeczenie() {
-        return false;   // TODO: ustawic date zakonczenia leczenia
+        leczenie.ustawDateZakonczeniaLeczenia();
+        czyAktywne = false;
+        return true;
     }
 }

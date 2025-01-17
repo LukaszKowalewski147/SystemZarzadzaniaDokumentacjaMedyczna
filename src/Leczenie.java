@@ -64,4 +64,9 @@ public class Leczenie {
     public String odczytajChorobe() {
         return choroba;
     }
+
+    public void ustawDateZakonczeniaLeczenia() {
+        //  Ustawienie aktualnej daty jako data zakonczenia leczenia
+        dataZakonczenia = new Date();
+    }
 }

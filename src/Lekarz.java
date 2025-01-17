@@ -1,10 +1,13 @@
+import java.util.ArrayList;
+
 public class Lekarz extends Pracownik {
 
     private String numerPWZ;
     private String specjalizacja;
     private String numerGabinetu;
 
-    // TODO: asocjacja 1 do wielu z wizytą, do dodania
+    //  Asocjacja wielu wizyt lekarza
+    private ArrayList<Wizyta> wizyty;
 
     public Lekarz(String imie, String nazwisko, String numerTelefonu,
                   String email, String godzinyPracy, String numerPWZ,
@@ -17,7 +20,15 @@ public class Lekarz extends Pracownik {
         this.numerGabinetu = numerGabinetu;
     }
 
+    //  Metoda dodajaca wizyte do kontenera "wizyty" wywolywana w konstruktorze wizyty
+    public void dodajWizyte(Wizyta wizyta) {
+        //  Sprawdz czy ta wizyta nie zostala dodana do tego lekarza
+        if (!wizyty.contains(wizyta)) {
+            wizyty.add(wizyta);
+        }
+    }
+
     public String wyswietlPubliczneDaneOsobowe() {
-        return "dane osobowe"; // TODO: dane ma zwracac
+        return pobierzDanePracownika() + "\n spec: " + specjalizacja + " gab: " + numerGabinetu + "\nnr PWZ: " + numerPWZ;
     }
 }

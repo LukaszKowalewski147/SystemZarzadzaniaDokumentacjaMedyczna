@@ -9,7 +9,7 @@ public class Wizyta {
     private Date termin;
     private short ocena;
 
-    //  Asocjacja jednego lekarza przeprowadzajacego jedna wizyte
+    //  Asocjacja jednego lekarza przeprowadzajacego wizyte
     private Lekarz lekarz;
 
     //  Leczenie w ktorym skomponowana jest wizyta
@@ -26,6 +26,9 @@ public class Wizyta {
         this.lekarz = lekarz;
         this.termin = termin;
         dokumenty = new ArrayList<Dokument>();
+
+        //  Dodanie wizyty do kontenera "wizyty" lekarza
+        lekarz.dodajWizyte(this);
     }
 
     //  Metoda tworzaca wizyte i dodajaca ja do leczenia

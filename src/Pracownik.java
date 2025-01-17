@@ -11,4 +11,8 @@ public abstract class Pracownik extends UzytkownikSystemu {
         this.email = email;
         this.godzinyPracy = godzinyPracy;
     }
+
+    protected String pobierzDanePracownika() {
+        return pobierzDaneOsobowe() + "\nemail: " + email + "\ngodziny pracy: " + godzinyPracy;
+    }
 }

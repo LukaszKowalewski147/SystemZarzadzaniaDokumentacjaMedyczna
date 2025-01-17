@@ -9,4 +9,8 @@ public abstract class UzytkownikSystemu {
         this.nazwisko = nazwisko;
         this.numerTelefonu = numerTelefonu;
     }
+
+    protected String pobierzDaneOsobowe() {
+        return imie + " " + nazwisko + "\ntel: " + numerTelefonu;
+    }
 }
