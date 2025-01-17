@@ -12,9 +12,9 @@ public class Zalecenie extends Dokument {
         this.poradaMedyczna = poradaMedyczna;
     }
 
-    //  Implementacja metody abstrakcyjnej wyswietlOpis() klasy Dokument
+    //  Implementacja metody abstrakcyjnej pobierzOpis() klasy Dokument
     @Override
-    public void wyswietlOpis() {
-
+    public String pobierzOpis() {
+        return "";
     }
 }

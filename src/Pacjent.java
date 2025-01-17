@@ -5,7 +5,7 @@ public class Pacjent extends UzytkownikSystemu {
 
     private String plec;
     private Date dataUrodzenia;
-    private int PESEL;
+    private long PESEL;
     private String adres;
     private String rodzajUbezpieczenia;
 
@@ -13,7 +13,7 @@ public class Pacjent extends UzytkownikSystemu {
     private ArrayList<Leczenie> leczenia;
 
     public Pacjent(String imie, String nazwisko, String numerTelefonu,
-                   String adres, Date dataUrodzenia, int PESEL,
+                   String adres, Date dataUrodzenia, long PESEL,
                    String plec, String rodzajUbezpieczenia) {
         //  Wywolanie konstruktora klasy nadrzednej UzytkownikSystemu
         super(imie, nazwisko, numerTelefonu);
@@ -34,39 +34,75 @@ public class Pacjent extends UzytkownikSystemu {
         }
     }
 
-    public Wizyta[] przegladajKalendarzWizyt() {
+    public void przegladajKalendarzWizyt() {
+        ArrayList<Wizyta> wizyty = pobierzWizyty();
+        //  System tworzy kalendarz na podstawie wizyt
+    }
+
+    private ArrayList<Wizyta> pobierzWizyty() {
+        return leczenia.get(0).pobierzWizyty();
+    }
+
+    public boolean umowWizyte() {
+        Leczenie leczenie = wybierzLeczenie();
+        if (leczenie == null)
+            leczenie = zalozLeczenie();
+
+        Lekarz lekarz = wybierzLekarza();
+        Date termin = wybierzTermin();
+
+        Wizyta.utworzWizyte(leczenie, lekarz, termin);
+        return true;
+    }
+
+    public boolean umowBadanie() {
+        Leczenie leczenie = wybierzLeczenie();
+        if (leczenie == null)
+            leczenie = zalozLeczenie();
+
+        Lekarz lekarz = wybierzLekarza();
+        Date termin = wybierzTermin();
+
+        Badanie.utworzBadanie(leczenie, lekarz, termin,"rodzaj_badania");
+        return true;
+    }
+
+    public boolean umowKonsultacje() {
+        Leczenie leczenie = wybierzLeczenie();
+        if (leczenie == null)
+            leczenie = zalozLeczenie();
+
+        Lekarz lekarz = wybierzLekarza();
+        Date termin = wybierzTermin();
+
+        Konsultacja.utworzKonsultacje(leczenie, lekarz, termin,false, "temat");
+        return true;
+    }
+
+    private Leczenie wybierzLeczenie() {
         return null;
     }
 
-    public boolean umowWizyte(Lekarz lekarz, Date data) {
-        return false;
+    private Lekarz wybierzLekarza() {
+        return null;
+    }
+
+    private Date wybierzTermin() {
+        return null;
     }
 
     public Leczenie wyszukajLeczenie(String choroba) {
-        return null;
+        Leczenie znalezioneLeczenie = null;
+        for (Leczenie leczenie : leczenia) {
+            if (leczenie.odczytajChorobe().equals(choroba)) {
+                znalezioneLeczenie = leczenie;
+                break;
+            }
+        }
+        return znalezioneLeczenie;
     }
 
-    public void zalozLeczenie() {
-
-    }
-
-    public Leczenie wybierzLeczenie() {
-        return null;
-    }
-
-    public Lekarz wybierzLekarza() {
-        return null;
-    }
-
-    public void wybierzDateKonsultacji() {
-
-    }
-
-    public void wybierzGodzineKonsultacji() {
-
-    }
-
-    public void zapiszKonsultacjeOnline() {
-
+    public Leczenie zalozLeczenie() {
+        return new Leczenie("choroba", this);
     }
 }

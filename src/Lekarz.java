@@ -3,7 +3,8 @@ public class Lekarz extends Pracownik {
     private String numerPWZ;
     private String specjalizacja;
     private String numerGabinetu;
-    private String dostepnoscLekarza; //????????
+
+    // TODO: asocjacja 1 do wielu z wizytą, do dodania
 
     public Lekarz(String imie, String nazwisko, String numerTelefonu,
                   String email, String godzinyPracy, String numerPWZ,
@@ -16,7 +17,7 @@ public class Lekarz extends Pracownik {
         this.numerGabinetu = numerGabinetu;
     }
 
-    public void wyswietlPubliczneDaneOsobowe() {
-
+    public String wyswietlPubliczneDaneOsobowe() {
+        return "dane osobowe"; // TODO: dane ma zwracac
     }
 }

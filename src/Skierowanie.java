@@ -14,9 +14,9 @@ public class Skierowanie extends Dokument {
         this.dataWaznosci = dataWaznosci;
     }
 
-    //  Implementacja metody abstrakcyjnej wyswietlOpis() klasy Dokument
+    //  Implementacja metody abstrakcyjnej pobierzOpis() klasy Dokument
     @Override
-    public void wyswietlOpis() {
-
+    public String pobierzOpis() {
+        return "";
     }
 }

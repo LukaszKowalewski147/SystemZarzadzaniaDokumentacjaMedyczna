@@ -45,5 +45,6 @@ public abstract class Dokument {
         wszystkieNosniki.add(nosnik);
     }
 
-    public abstract void wyswietlOpis();
+    // TODO: w komentarzu implementacji zmienic nazwe metody
+    public abstract String pobierzOpis();
 }

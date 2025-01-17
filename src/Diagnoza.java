@@ -12,9 +12,9 @@ public class Diagnoza extends Dokument {
         this.dolegliwosci = dolegliwosci;
     }
 
-    //  Implementacja metody abstrakcyjnej wyswietlOpis() klasy Dokument
+    //  Implementacja metody abstrakcyjnej pobierzOpis() klasy Dokument
     @Override
-    public void wyswietlOpis() {
-
+    public String pobierzOpis() {
+        return "";
     }
 }

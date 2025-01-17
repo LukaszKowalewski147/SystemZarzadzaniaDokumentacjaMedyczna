@@ -20,15 +20,18 @@ public class Leczenie {
     //  Kompozycja wielu wizyt jednego leczenia
     private ArrayList<Wizyta> wizyty;
 
-    public Leczenie(String choroba, Pacjent pacjent, Prowadzenie prowadzenie) {
+    public Leczenie(String choroba, Pacjent pacjent) {
         this.choroba = choroba;
         this.pacjent = pacjent;
-        this.prowadzenie = prowadzenie;
         czyZarchiwizowane = false;
         wizyty = new ArrayList<Wizyta>();
 
         //  Dodanie leczenia do kontenera "leczenia" pacjenta
         pacjent.dodajLeczenie(this);
+    }
+
+    public void ustawProwadzenie(Prowadzenie prowadzenie) {
+        this.prowadzenie = prowadzenie;
     }
 
     //  Metoda dodajaca wizyte do kontenera "wizyty" wywolywana podczas tworzenia wizyty, badania lub konsultacji
@@ -45,6 +48,11 @@ public class Leczenie {
         }
     }
 
+    public ArrayList<Wizyta> pobierzWizyty() {
+        return wizyty;
+    }
+
+    //  Po 15 latach od daty zakonczenia leczenia
     public void zarchiwizuj() {
         czyZarchiwizowane = true;
     }
@@ -53,7 +61,7 @@ public class Leczenie {
         return "raport";
     }
 
-    public void zalozLeczenie() {
-        // TODO: zakladanie tutaj lub u pacjenta
+    public String odczytajChorobe() {
+        return choroba;
     }
 }

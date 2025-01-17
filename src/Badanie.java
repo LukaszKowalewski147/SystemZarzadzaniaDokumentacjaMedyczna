@@ -1,3 +1,5 @@
+import java.util.Date;
+
 public class Badanie extends Wizyta {
 
     private String rodzajBadania;
@@ -5,23 +7,22 @@ public class Badanie extends Wizyta {
 
     //  Prywatny konstruktor dostepny tylko z metody utworzBadanie()
     private Badanie(Leczenie leczenie, Lekarz lekarz,
-                    String rodzajBadania, String opisWymaganegoPrzygotowania) {
+                    Date termin, String rodzajBadania) {
         //  Wywolanie konstruktora klasy nadrzednej Wizyta
-        super(leczenie, lekarz);
+        super(leczenie, lekarz, termin);
 
         this.rodzajBadania = rodzajBadania;
-        this.opisWymaganegoPrzygotowania = opisWymaganegoPrzygotowania;
     }
 
     //  Metoda tworzaca badanie i dodajaca je do leczenia
     public static Badanie utworzBadanie(Leczenie leczenie, Lekarz lekarz,
-                                       String rodzajBadania, String opisWymaganegoPrzygotowania) {
+                                       Date termin, String rodzajBadania) {
         if (leczenie == null) {
             System.out.println("Leczenie nie istnieje!");
             return null;
         }
         //  Utworz nowe badanie (wizyta)
-        Badanie badanie = new Badanie(leczenie, lekarz, rodzajBadania, opisWymaganegoPrzygotowania);
+        Badanie badanie = new Badanie(leczenie, lekarz, termin, rodzajBadania);
         //  Dodaj badanie (wizyta) do leczenia
         try {
             leczenie.dodajWizyte(badanie);
@@ -30,6 +31,10 @@ public class Badanie extends Wizyta {
             return null;
         }
         return badanie;
+    }
+
+    public void dodajOpisWymaganegoPrzygotowania(String opisWymaganegoPrzygotowania) {
+        this.opisWymaganegoPrzygotowania = opisWymaganegoPrzygotowania;
     }
 
     public void zapiszBadanieWKalendarzu() {

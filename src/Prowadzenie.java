@@ -1,7 +1,7 @@
 public class Prowadzenie {
 
     private String celProwadzenia;
-    private boolean czyAktywna;
+    private boolean czyAktywne;
 
     //  Asocjacja prowadzenia leczenia
     private Leczenie leczenie;
@@ -15,5 +15,9 @@ public class Prowadzenie {
 
         //  Dodanie prowadzenia do kontenera "prowadzenia" lekarza prowadzacego
         lekarzProwadzacy.dodajProwadzenie(this);
+    }
+
+    public boolean zakonczLeczenie() {
+        return false;   // TODO: ustawic date zakonczenia leczenia
     }
 }

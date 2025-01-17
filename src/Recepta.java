@@ -16,9 +16,9 @@ public class Recepta extends Dokument {
         this.leki = leki;
     }
 
-    //  Implementacja metody abstrakcyjnej wyswietlOpis() klasy Dokument
+    //  Implementacja metody abstrakcyjnej pobierzOpis() klasy Dokument
     @Override
-    public void wyswietlOpis() {
-
+    public String pobierzOpis() {
+        return "";
     }
 }

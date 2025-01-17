@@ -1,3 +1,5 @@
+import java.util.Date;
+
 public class Recepcjonista extends Pracownik {
 
     private String numerStanowiska;
@@ -10,7 +12,10 @@ public class Recepcjonista extends Pracownik {
         this.numerStanowiska = numerStanowiska;
     }
 
-    public void rejestrujKonto() {
+    public Pacjent rejestrujKontoPacjenta() {
+        Pacjent pacjent = new Pacjent("imie", "nazwisko", "+481234",
+                "adres", null, 12345768, "plec", "rodzaj");
 
+        return pacjent;
     }
 }

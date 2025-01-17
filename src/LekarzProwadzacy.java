@@ -25,8 +25,4 @@ public class LekarzProwadzacy extends Lekarz {
             prowadzenia.add(prowadzenie);
         }
     }
-
-    public boolean zakonczLeczenie(Leczenie leczenie) {
-        return false;
-    }
 }
