@@ -23,4 +23,8 @@ public class Prowadzenie {
         czyAktywne = false;
         return true;
     }
+
+    public Leczenie pokazLeczenie() {
+        return leczenie;
+    }
 }

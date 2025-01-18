@@ -127,4 +127,8 @@ public class Wizyta {
         String daneLekarza = lekarz.wyswietlPubliczneDaneOsobowe();
         return "PACJENT: " + danePacjenta + "\nLEKARZ: " + daneLekarza;
     }
+
+    public ArrayList<Dokument> pobierzDokumenty() {
+        return dokumenty;
+    }
 }
