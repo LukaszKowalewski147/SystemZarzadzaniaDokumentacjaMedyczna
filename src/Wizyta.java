@@ -123,7 +123,8 @@ public class Wizyta {
     }
 
     public String pobierzInformacjeOWizycie() {
-        String danePacjenta; // TODO: zwrocic dane o wizycie
-        return "";
+        String danePacjenta = leczenie.pokazPacjenta().pobierzDanePacjenta();
+        String daneLekarza = lekarz.wyswietlPubliczneDaneOsobowe();
+        return "PACJENT: " + danePacjenta + "\nLEKARZ: " + daneLekarza;
     }
 }

@@ -69,4 +69,8 @@ public class Leczenie {
         //  Ustawienie aktualnej daty jako data zakonczenia leczenia
         dataZakonczenia = new Date();
     }
+
+    public Pacjent pokazPacjenta() {
+        return pacjent;
+    }
 }

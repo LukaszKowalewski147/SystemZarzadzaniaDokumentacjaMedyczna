@@ -110,4 +110,8 @@ public class Pacjent extends UzytkownikSystemu {
     public void wyrejestrujKonto() {
         wyrejestrowany = true;
     }
+
+    public String pobierzDanePacjenta() {
+        return pobierzDaneOsobowe() + "\n" + plec + " ur:" + dataUrodzenia.toString() + "\nPESEL: " + PESEL;
+    }
 }
