@@ -27,4 +27,8 @@ public class Prowadzenie {
     public Leczenie pokazLeczenie() {
         return leczenie;
     }
+
+    public LekarzProwadzacy pokazLekarzaProwadzacego() {
+        return lekarzProwadzacy;
+    }
 }

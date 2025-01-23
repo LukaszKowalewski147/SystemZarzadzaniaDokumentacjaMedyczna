@@ -20,6 +20,9 @@ public class Leczenie {
     //  Kompozycja wielu wizyt jednego leczenia
     private ArrayList<Wizyta> wizyty;
 
+    //  Ekstensja klasy
+    private static HashSet<Leczenie> wszystkieLeczenia = new HashSet<Leczenie>();
+
     public Leczenie(String choroba, Pacjent pacjent) {
         this.choroba = choroba;
         this.pacjent = pacjent;
@@ -28,6 +31,9 @@ public class Leczenie {
 
         //  Dodanie leczenia do kontenera "leczenia" pacjenta
         pacjent.dodajLeczenie(this);
+
+        //  Dodanie utworzonego leczenia do ekstensji klasy
+        wszystkieLeczenia.add(this);
     }
 
     public void ustawProwadzenie(Prowadzenie prowadzenie) {
@@ -48,6 +54,29 @@ public class Leczenie {
         }
     }
 
+    //  Metoda wyszukujaca leczenie po pacjencie, chorobie i dacie rozpoczecia
+    public static Leczenie wyszukajLeczenie(Pacjent pacjent, String choroba, Date dataRozpoczecia) {
+        for (Leczenie leczenie : wszystkieLeczenia) {
+            if (leczenie.pacjent.equals(pacjent)) {
+                if (leczenie.choroba.equals(choroba)) {
+                    if (leczenie.dataRozpoczecia.equals(dataRozpoczecia))
+                        return leczenie;
+                }
+            }
+        }
+        return null;
+    }
+
+    //  Metoda wyszukujaca wszystkie leczenia jednego pacjenta
+    public static ArrayList<Leczenie> wyszukajLeczeniaPacjenta(Pacjent pacjent) {
+        ArrayList<Leczenie> leczeniaPacjenta = new ArrayList<>();
+        for (Leczenie leczenie : wszystkieLeczenia) {
+            if (leczenie.pacjent.equals(pacjent))
+                leczeniaPacjenta.add(leczenie);
+        }
+        return leczeniaPacjenta;
+    }
+
     public ArrayList<Wizyta> pobierzWizyty() {
         return wizyty;
     }
@@ -58,7 +87,20 @@ public class Leczenie {
     }
 
     public String generujRaport() {
-        return "raport";
+        String iloscWizyt = "Ilosc wizyt: " + wizyty.size() + "\n";
+        StringBuilder wizytyInfo = new StringBuilder();
+        StringBuilder dokumentyInfo = new StringBuilder();
+
+        for (Wizyta wizyta : wizyty) {
+            wizytyInfo.append(wizyta.pobierzInformacjeOWizycie());
+            StringBuilder dokumentyWizytyInfo = new StringBuilder();
+            ArrayList<Dokument> dokumentyWizyty = wizyta.pobierzDokumenty();
+            for (Dokument dokument : dokumentyWizyty) {
+                dokumentyWizytyInfo.append(dokument.pobierzOpis());
+            }
+            dokumentyInfo.append(dokumentyWizytyInfo);
+        }
+        return iloscWizyt + wizytyInfo + dokumentyInfo;
     }
 
     public String odczytajChorobe() {
@@ -72,5 +114,17 @@ public class Leczenie {
 
     public Pacjent pokazPacjenta() {
         return pacjent;
+    }
+
+    public LekarzProwadzacy pokazLekarzaProwadzacego() {
+        return prowadzenie.pokazLekarzaProwadzacego();
+    }
+
+    public Date pokazDateRozpoczecia() {
+        return dataRozpoczecia;
+    }
+
+    public Date pokazDateZakonczenia() {
+        return dataZakonczenia;
     }
 }

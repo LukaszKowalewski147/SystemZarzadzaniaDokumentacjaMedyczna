@@ -52,4 +52,8 @@ public abstract class Dokument {
 
     //  Metoda abstrakcyjna implementowana przez wszystkie klasy dziedziczace
     public abstract String pobierzOpis();
+
+    public Wizyta pokazWizyte() {
+        return wizyta;
+    }
 }

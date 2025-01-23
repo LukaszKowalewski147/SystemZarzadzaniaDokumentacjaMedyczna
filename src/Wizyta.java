@@ -118,10 +118,6 @@ public class Wizyta {
         dokument.wybierzNosnik();
     }
 
-    public void zmienStatusWizyty(StatusWizyty status) {
-        statusWizyty = status;
-    }
-
     public String pobierzInformacjeOWizycie() {
         String danePacjenta = leczenie.pokazPacjenta().pobierzDanePacjenta();
         String daneLekarza = lekarz.wyswietlPubliczneDaneOsobowe();
@@ -130,5 +126,33 @@ public class Wizyta {
 
     public ArrayList<Dokument> pobierzDokumenty() {
         return dokumenty;
+    }
+
+    public void rozpocznijWizyte() {
+        zmienStatusWizyty(StatusWizyty.W_TRAKCIE);
+    }
+
+    public void odwolajWizyte() {
+        zmienStatusWizyty(StatusWizyty.ODWOLANA);
+    }
+
+    public void oznaczNieobecnoscPacjenta() {
+        zmienStatusWizyty(StatusWizyty.NIEZREALIZOWANA);
+    }
+
+    public void zakonczWizyte() {
+        zmienStatusWizyty(StatusWizyty.ZREALIZOWANA);
+    }
+
+    public Lekarz pokazLekarza() {
+        return lekarz;
+    }
+
+    public Leczenie pokazLeczenie() {
+        return leczenie;
+    }
+
+    private void zmienStatusWizyty(StatusWizyty status) {
+        statusWizyty = status;
     }
 }

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 
 public class Pacjent extends UzytkownikSystemu {
 
@@ -13,6 +14,9 @@ public class Pacjent extends UzytkownikSystemu {
     //  Asocjacja wielu leczen pacjenta
     private ArrayList<Leczenie> leczenia;
 
+    //  Ekstensja klasy
+    private static HashSet<Pacjent> wszyscyPacjenci = new HashSet<Pacjent>();
+
     public Pacjent(String imie, String nazwisko, String numerTelefonu,
                    String adres, Date dataUrodzenia, long PESEL,
                    String plec, String rodzajUbezpieczenia) {
@@ -25,6 +29,9 @@ public class Pacjent extends UzytkownikSystemu {
         this.plec = plec;
         this.rodzajUbezpieczenia = rodzajUbezpieczenia;
         leczenia = new ArrayList<Leczenie>();
+
+        //  Dodanie utworzonego pacjenta do ekstensji klasy
+        wszyscyPacjenci.add(this);
     }
 
     //  Metoda dodajaca leczenie do kontenera "leczenia" wywolywana w konstruktorze leczenia
@@ -35,9 +42,13 @@ public class Pacjent extends UzytkownikSystemu {
         }
     }
 
-    public void przegladajKalendarzWizyt() {
-        ArrayList<Wizyta> wizyty = pobierzWizyty();
-        //  System tworzy kalendarz na podstawie wizyt
+    //  Metoda wyszukujaca pacjenta po numerze PESEL
+    public static Pacjent wyszukajPacjenta(long PESEL) {
+        for (Pacjent pacjent : wszyscyPacjenci) {
+            if (pacjent.PESEL == PESEL)
+                return pacjent;
+        }
+        return null;
     }
 
     private ArrayList<Wizyta> pobierzWizyty() {
@@ -56,42 +67,42 @@ public class Pacjent extends UzytkownikSystemu {
         return true;
     }
 
-    public boolean umowBadanie() {
+    public boolean umowBadanie(Skierowanie skierowanie) {
         Leczenie leczenie = wybierzLeczenie();
-        if (leczenie == null)
-            leczenie = zalozLeczenie();
-
         Lekarz lekarz = wybierzLekarza();
         Date termin = wybierzTermin();
 
-        Badanie.utworzBadanie(leczenie, lekarz, termin,"rodzaj_badania");
+        Badanie.utworzBadanie(leczenie, lekarz, termin, skierowanie);
         return true;
     }
 
-    public boolean umowKonsultacje() {
+    public boolean umowKonsultacje(boolean online, String temat) {
         Leczenie leczenie = wybierzLeczenie();
-        if (leczenie == null)
-            leczenie = zalozLeczenie();
-
         Lekarz lekarz = wybierzLekarza();
         Date termin = wybierzTermin();
 
-        Konsultacja.utworzKonsultacje(leczenie, lekarz, termin,false, "temat");
+        Konsultacja.utworzKonsultacje(leczenie, lekarz, termin, online, temat);
         return true;
     }
 
     private Leczenie wybierzLeczenie() {
-        return null;
+        Leczenie leczenie = null;   //  [...] Logika biznesowa wyboru procesu leczenia
+        if (leczenie == null)
+            leczenie = zalozLeczenie();
+        return leczenie;
     }
 
     private Lekarz wybierzLekarza() {
+        //  [...] Logika biznesowa wyboru lekarza
         return null;
     }
 
     private Date wybierzTermin() {
+        //  [...] Logika biznesowa wyboru terminu
         return null;
     }
 
+    //  Metoda wyszukujaca leczenie po nazwie choroby
     public Leczenie wyszukajLeczenie(String choroba) {
         Leczenie znalezioneLeczenie = null;
         for (Leczenie leczenie : leczenia) {
@@ -104,7 +115,10 @@ public class Pacjent extends UzytkownikSystemu {
     }
 
     public Leczenie zalozLeczenie() {
-        return new Leczenie("choroba", this);
+        //  [...] Logika biznesowa wyboru choroby
+        String choroba = "choroba";
+
+        return new Leczenie(choroba, this);
     }
 
     public void wyrejestrujKonto() {

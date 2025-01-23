@@ -33,8 +33,4 @@ public class Konsultacja extends Wizyta {
         }
         return konsultacja;
     }
-
-    public void zapiszKonsultacjeWKalendarzu() {
-
-    }
 }
