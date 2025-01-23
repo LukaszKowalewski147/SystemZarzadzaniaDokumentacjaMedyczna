@@ -17,12 +17,13 @@ public class Leczenie {
 
     //  Ekstensja klasy Wizyty
     private static HashSet<Wizyta> wszystkieWizyty = new HashSet<Wizyta>();
-    //  Kompozycja wielu wizyt jednego leczenia
+    //  Wizyty ktore powiazane sa z leczeniem (kompozycja wizyt w leczeniu)
     private ArrayList<Wizyta> wizyty;
 
     //  Ekstensja klasy
     private static HashSet<Leczenie> wszystkieLeczenia = new HashSet<Leczenie>();
 
+    //  Publiczny konstruktor
     public Leczenie(String choroba, Pacjent pacjent) {
         this.choroba = choroba;
         this.pacjent = pacjent;
@@ -36,6 +37,7 @@ public class Leczenie {
         wszystkieLeczenia.add(this);
     }
 
+    //  Metoda ustawiajaca prowadzenie leczenia
     public void ustawProwadzenie(Prowadzenie prowadzenie) {
         this.prowadzenie = prowadzenie;
     }
@@ -77,15 +79,17 @@ public class Leczenie {
         return leczeniaPacjenta;
     }
 
+    //  Metoda dostepu do wszystkich wizyt powiazanych z leczeniem
     public ArrayList<Wizyta> pobierzWizyty() {
         return wizyty;
     }
 
-    //  Po 15 latach od daty zakonczenia leczenia
+    //  Metoda archiwizujaca leczenie 15 latach od daty zakonczenia leczenia
     public void zarchiwizuj() {
         czyZarchiwizowane = true;
     }
 
+    //  Metoda generujaca raport z leczenia
     public String generujRaport() {
         String iloscWizyt = "Ilosc wizyt: " + wizyty.size() + "\n";
         StringBuilder wizytyInfo = new StringBuilder();
@@ -103,28 +107,39 @@ public class Leczenie {
         return iloscWizyt + wizytyInfo + dokumentyInfo;
     }
 
-    public String odczytajChorobe() {
-        return choroba;
-    }
-
+    //  Metoda ustawiajaca date zakonczenia leczenia
     public void ustawDateZakonczeniaLeczenia() {
         //  Ustawienie aktualnej daty jako data zakonczenia leczenia
         dataZakonczenia = new Date();
     }
 
+    //  Metoda dostepu do pacjenta powiazanego z leczeniem
     public Pacjent pokazPacjenta() {
         return pacjent;
     }
 
+    //  Metoda dostepu do lekarza prowadzacego powiazanego z leczeniem
     public LekarzProwadzacy pokazLekarzaProwadzacego() {
         return prowadzenie.pokazLekarzaProwadzacego();
     }
 
+    //  Metoda dostepu do nazwy choroby
+    public String odczytajChorobe() {
+        return choroba;
+    }
+
+    //  Metoda dostepu do daty rozpoczecia leczenia
     public Date pokazDateRozpoczecia() {
         return dataRozpoczecia;
     }
 
+    //  Metoda dostepu do daty zakonczenia leczenia
     public Date pokazDateZakonczenia() {
         return dataZakonczenia;
+    }
+
+    //  Metoda dostepu do flagi "czyZarchiwizowane"
+    public boolean czyZarchiwizowane() {
+        return czyZarchiwizowane;
     }
 }

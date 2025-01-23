@@ -17,6 +17,7 @@ public class Pacjent extends UzytkownikSystemu {
     //  Ekstensja klasy
     private static HashSet<Pacjent> wszyscyPacjenci = new HashSet<Pacjent>();
 
+    //  Publiczny konstruktor
     public Pacjent(String imie, String nazwisko, String numerTelefonu,
                    String adres, Date dataUrodzenia, long PESEL,
                    String plec, String rodzajUbezpieczenia) {
@@ -51,10 +52,7 @@ public class Pacjent extends UzytkownikSystemu {
         return null;
     }
 
-    private ArrayList<Wizyta> pobierzWizyty() {
-        return leczenia.get(0).pobierzWizyty();
-    }
-
+    //  Metoda tworzaca wizyte
     public boolean umowWizyte() {
         Leczenie leczenie = wybierzLeczenie();
         if (leczenie == null)
@@ -67,6 +65,7 @@ public class Pacjent extends UzytkownikSystemu {
         return true;
     }
 
+    //  Metoda tworzaca badanie
     public boolean umowBadanie(Skierowanie skierowanie) {
         Leczenie leczenie = wybierzLeczenie();
         Lekarz lekarz = wybierzLekarza();
@@ -76,6 +75,7 @@ public class Pacjent extends UzytkownikSystemu {
         return true;
     }
 
+    //  Metoda tworzaca konsultacje
     public boolean umowKonsultacje(boolean online, String temat) {
         Leczenie leczenie = wybierzLeczenie();
         Lekarz lekarz = wybierzLekarza();
@@ -85,6 +85,7 @@ public class Pacjent extends UzytkownikSystemu {
         return true;
     }
 
+    //  Prywatna metoda wybierajaca leczenie lub tworzaca je jesli nie istnieje
     private Leczenie wybierzLeczenie() {
         Leczenie leczenie = null;   //  [...] Logika biznesowa wyboru procesu leczenia
         if (leczenie == null)
@@ -92,17 +93,19 @@ public class Pacjent extends UzytkownikSystemu {
         return leczenie;
     }
 
+    //  Prywatna metoda wybierajaca lekarza
     private Lekarz wybierzLekarza() {
         //  [...] Logika biznesowa wyboru lekarza
         return null;
     }
 
+    //  Prywatna metoda wybierajaca termin
     private Date wybierzTermin() {
         //  [...] Logika biznesowa wyboru terminu
         return null;
     }
 
-    //  Metoda wyszukujaca leczenie po nazwie choroby
+    //  Metoda wyszukujaca leczenie pacjenta po nazwie choroby
     public Leczenie wyszukajLeczenie(String choroba) {
         Leczenie znalezioneLeczenie = null;
         for (Leczenie leczenie : leczenia) {
@@ -114,6 +117,7 @@ public class Pacjent extends UzytkownikSystemu {
         return znalezioneLeczenie;
     }
 
+    //  Metoda tworzaca leczenie
     public Leczenie zalozLeczenie() {
         //  [...] Logika biznesowa wyboru choroby
         String choroba = "choroba";
@@ -121,11 +125,19 @@ public class Pacjent extends UzytkownikSystemu {
         return new Leczenie(choroba, this);
     }
 
+    //  Metoda wyrejestrowujaca konto pacjenta
     public void wyrejestrujKonto() {
         wyrejestrowany = true;
     }
 
+    //  Metoda zwracajaca dane pacjenta
     public String pobierzDanePacjenta() {
-        return pobierzDaneOsobowe() + "\n" + plec + " ur:" + dataUrodzenia.toString() + "\nPESEL: " + PESEL;
+        return pobierzDaneOsobowe() + "\n" + plec + " ur:" + dataUrodzenia.toString() + "\nPESEL: " + PESEL +
+                "\nAdres: " + adres + "\nTyp ubezpieczenia: " + rodzajUbezpieczenia;
+    }
+
+    //  Metoda dostepu do flagi "wyrejestrowany"
+    public boolean czyWyrejestrowany() {
+        return wyrejestrowany;
     }
 }

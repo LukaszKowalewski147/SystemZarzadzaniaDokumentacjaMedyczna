@@ -35,6 +35,7 @@ public class Skierowanie extends Dokument {
         return skierowanie;
     }
 
+    //  Metoda zwracajaca informacje o skierowaniu
     public String pobierzInformacjeOSkierowaniu() {
         return typBadania + "\nWazne do: " + dataWaznosci.toString();
     }

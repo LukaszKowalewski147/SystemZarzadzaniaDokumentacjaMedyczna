@@ -29,7 +29,9 @@ public class DokumentPapierowy extends Nosnik {
         return dokumentPapierowy;
     }
 
+    //  Metoda sprawdzajaca czy mozna utworzyc dokument papierowy
     public boolean czyNosnikDostepny() {
-        return false;
+        //  [...] Logika biznesowa sprawdzenia czy mozna utworzyc dokument papierowy
+        return true;
     }
 }

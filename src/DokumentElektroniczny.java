@@ -29,7 +29,9 @@ public class DokumentElektroniczny extends Nosnik {
         return dokumentElektroniczny;
     }
 
+    //  Metoda podpisujaca dokument podpisem cyfrowym
     public boolean podpisz() {
-        return false;
+        //  [...] Logika biznesowa realizacji podpisu cyfrowego
+        return true;
     }
 }

@@ -7,6 +7,7 @@ public class LekarzProwadzacy extends Lekarz {
     //  Asocjacja wielu prowadzen lekarza prowadzacego
     private ArrayList<Prowadzenie> prowadzenia;
 
+    // Publiczny konstruktor
     public LekarzProwadzacy(String imie, String nazwisko, String numerTelefonu,
                             String email, String godzinyPracy, String numerPWZ,
                             String specjalizacja, String numerGabinetu,
@@ -24,5 +25,10 @@ public class LekarzProwadzacy extends Lekarz {
         if (!prowadzenia.contains(prowadzenie)) {
             prowadzenia.add(prowadzenie);
         }
+    }
+
+    //  Metoda dostepu do numeru pierwszego kontaktu
+    public String pokazNumerPierwszegoKontaktu() {
+        return numerPierwszegoKontaktu;
     }
 }

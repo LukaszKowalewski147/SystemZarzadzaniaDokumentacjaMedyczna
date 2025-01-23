@@ -34,11 +34,28 @@ public class Badanie extends Wizyta {
         return badanie;
     }
 
+    //  Metoda ustawiająca atrybut opcjonalny "opisWymaganegoPrzygotowania"
     public void dodajOpisWymaganegoPrzygotowania(String opisWymaganegoPrzygotowania) {
         this.opisWymaganegoPrzygotowania = opisWymaganegoPrzygotowania;
     }
 
+    //  Zmiana statusu badania na "zrealizowane"
     public void zmienStatusNaZrealizowane() {
         zrealizowane = true;
+    }
+
+    //  Metoda dostepu do skierowania
+    public Skierowanie pokazSkierowanie() {
+        return skierowanie;
+    }
+
+    //  Metoda dostepu do opisu wymaganego przygotowania
+    public String pokazOpisWymaganegoPrzygotowania() {
+        return opisWymaganegoPrzygotowania;
+    }
+
+    //  Metoda dostepu do flagi "czyZrealizowane"
+    public boolean czyZrealizowane() {
+        return czyZrealizowane();
     }
 }

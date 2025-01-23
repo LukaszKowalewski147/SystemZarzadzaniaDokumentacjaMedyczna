@@ -33,4 +33,14 @@ public class Konsultacja extends Wizyta {
         }
         return konsultacja;
     }
+
+    //  Metoda dostepu do flagi "online"
+    public boolean czyOnline() {
+        return online;
+    }
+
+    //  Metoda dostepu do tematu konsultacji
+    public String pokazTematKonsultacji() {
+        return tematKonsultacji;
+    }
 }

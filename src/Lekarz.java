@@ -13,6 +13,7 @@ public class Lekarz extends Pracownik {
     //  Ekstensja klasy
     private static HashSet<Lekarz> wszyscyLekarze = new HashSet<Lekarz>();
 
+    //  Publiczny konstruktor
     public Lekarz(String imie, String nazwisko, String numerTelefonu,
                   String email, String godzinyPracy, String numerPWZ,
                   String specjalizacja, String numerGabinetu) {
@@ -44,6 +45,7 @@ public class Lekarz extends Pracownik {
         return null;
     }
 
+    //  Metoda zwracajaca publiczne dane osobowe lekarza
     public String wyswietlPubliczneDaneOsobowe() {
         return pobierzDanePracownika() + "\n spec: " + specjalizacja + " gab: " + numerGabinetu + "\nnr PWZ: " + numerPWZ;
     }

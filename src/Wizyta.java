@@ -4,7 +4,8 @@ import java.util.HashSet;
 
 public class Wizyta {
 
-    private int maksymalneSpoznienie = 15;      //w minutach
+    private static int maksymalneSpoznienie = 15;      //w minutach
+
     private StatusWizyty statusWizyty = StatusWizyty.ZAPLANOWANA;
     private Date termin;
     private short ocena = -1;
@@ -20,7 +21,7 @@ public class Wizyta {
     //  Kompozycja wielu dokumentow jednej wizyty
     private ArrayList<Dokument> dokumenty;
 
-    //  Ekstensja klasy Wizyta
+    //  Ekstensja klasy
     private static HashSet<Wizyta> wszystkieWizyty = new HashSet<Wizyta>();
 
     //  Chroniony konstruktor wywolywany przez metode utworzWizyte() i klasy dziedziczace
@@ -84,74 +85,88 @@ public class Wizyta {
         return srednia;
     }
 
+    //  Metoda ustawiajaca ocene wizyty
     public void ocenWizyte(short ocena) {
         this.ocena = ocena;
     }
 
+    //  Metoda wyboru i tworzenia dokumentu
     public void wystawDokument() {
         Dokument dokument = null;
 
-        //  Uzytkownik wybiera typ dokumentu w UI
+        int typDokumentu = 0;   //  [...] Logika biznesowa wyboru typu dokumentu
 
-        int typDokumentu = 0;
+        String nazwaJednostkiMedycznej = "nazwa_jednostki_medycznej";
         switch (typDokumentu) {
             case 0:
-                dokument = Skierowanie.utworzSkierowanie(this, termin, "nazwa_jednostki", "typ_badania", null);
+                dokument = Skierowanie.utworzSkierowanie(this, termin, nazwaJednostkiMedycznej, "typ_badania", null);
                 break;
             case 1:
-                dokument = WynikBadania.utworzWynikBadania(this, termin, "nazwa_jednostki", "typ_badania", "opis");
+                dokument = WynikBadania.utworzWynikBadania(this, termin, nazwaJednostkiMedycznej, "typ_badania", "opis");
                 break;
             case 2:
-                dokument = Diagnoza.utworzDiagnoze(this, termin, "nazwa_jednostki", new String[]{"bol", "skurcz"});
+                dokument = Diagnoza.utworzDiagnoze(this, termin, nazwaJednostkiMedycznej, new String[]{"bol", "skurcz"});
                 break;
             case 3:
-                dokument = Recepta.utworzRecepte(this, termin, "nazwa_jednostki", null, "dawkowanie", "lek1,lek2");
+                dokument = Recepta.utworzRecepte(this, termin, nazwaJednostkiMedycznej, null, "dawkowanie", "lek1,lek2");
                 break;
             case 4:
-                dokument = Zalecenie.utworzZalecenie(this, termin, "nazwa_jednostki", "porada_medyczna");
+                dokument = Zalecenie.utworzZalecenie(this, termin, nazwaJednostkiMedycznej, "porada_medyczna");
                 break;
         }
 
         if (dokument == null)
             return;
 
+        //  Obowiazkowy wybor nosnika dokumnetu
         dokument.wybierzNosnik();
     }
 
+    //  Metoda zwracajaca informacje o wizycie
     public String pobierzInformacjeOWizycie() {
         String danePacjenta = leczenie.pokazPacjenta().pobierzDanePacjenta();
         String daneLekarza = lekarz.wyswietlPubliczneDaneOsobowe();
-        return "PACJENT: " + danePacjenta + "\nLEKARZ: " + daneLekarza;
+        String status = statusWizyty.toString();
+        return "PACJENT: " + danePacjenta + "\nLEKARZ: " + daneLekarza +
+                "\nTermin: " + termin + "\n Status: " + status;
     }
 
+    //  Metoda zwracajaca wszystkie dokumenty powiazane z wizyta
     public ArrayList<Dokument> pobierzDokumenty() {
         return dokumenty;
     }
 
+    //  Metoda rozpoczynajaca wizyte
     public void rozpocznijWizyte() {
         zmienStatusWizyty(StatusWizyty.W_TRAKCIE);
     }
 
+    //  Metoda odwolujaca wizyte
     public void odwolajWizyte() {
         zmienStatusWizyty(StatusWizyty.ODWOLANA);
     }
 
+    //  Metoda zaznaczajaca nieobecnosc pacjenta
     public void oznaczNieobecnoscPacjenta() {
         zmienStatusWizyty(StatusWizyty.NIEZREALIZOWANA);
     }
 
+    //  Metoda konczaca wizyte
     public void zakonczWizyte() {
         zmienStatusWizyty(StatusWizyty.ZREALIZOWANA);
     }
 
+    //  Metoda dostepu do lekarza przeprowadzajacego wizyte
     public Lekarz pokazLekarza() {
         return lekarz;
     }
 
+    //  Metoda dostepu do leczenia powiazanego z wizyta
     public Leczenie pokazLeczenie() {
         return leczenie;
     }
 
+    //  Prywatna metoda zmieniajaca status wizyty
     private void zmienStatusWizyty(StatusWizyty status) {
         statusWizyty = status;
     }

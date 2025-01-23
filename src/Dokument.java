@@ -6,12 +6,12 @@ public abstract class Dokument {
     private Date dataWystawienia;
     private String nazwaJednostkiMedycznej;
 
-    //  Wizyta w ktorej skomponowany jest dokument
+    //  Wizyta z ktora powiazany jest dokument (kompozycja dokumentow w wizycie)
     private Wizyta wizyta;
 
     //  Ekstensja klasy Nosnik
     private static HashSet<Nosnik> wszystkieNosniki = new HashSet<Nosnik>();
-    //  Kompozycja jednego nosnika dokumentu
+    //  Nosnik ktory powiazany jest z dokumentem (kompozycja nosnika w dokumencie)
     private Nosnik nosnik;
 
     //  Chroniony konstruktor wywolywany tylko przez klasy dziedziczace
@@ -53,7 +53,18 @@ public abstract class Dokument {
     //  Metoda abstrakcyjna implementowana przez wszystkie klasy dziedziczace
     public abstract String pobierzOpis();
 
+    //  Metoda dostepu do wizyty do ktorej przypisany jest dokument
     public Wizyta pokazWizyte() {
         return wizyta;
+    }
+
+    //  Metoda dostepu do daty wystawienia
+    public Date pokazDateWystawienia() {
+        return dataWystawienia;
+    }
+
+    //  Metoda dostepu do nazwy jednostki medycznej
+    public String pokazNazweJednostkiMedycznej() {
+        return nazwaJednostkiMedycznej;
     }
 }
