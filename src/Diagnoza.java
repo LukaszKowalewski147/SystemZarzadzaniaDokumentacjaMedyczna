@@ -36,6 +36,6 @@ public class Diagnoza extends Dokument {
     //  Implementacja metody abstrakcyjnej pobierzOpis() klasy Dokument
     @Override
     public String pobierzOpis() {
-        return "";
+        return "Dolegliwosci: " + dolegliwosci.toString();
     }
 }

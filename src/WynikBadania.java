@@ -38,6 +38,6 @@ public class WynikBadania extends Dokument {
     //  Implementacja metody abstrakcyjnej pobierzOpis() klasy Dokument
     @Override
     public String pobierzOpis() {
-        return "";
+        return "Typ badania: " + typBadania + "\nOpis: " + opis;
     }
 }

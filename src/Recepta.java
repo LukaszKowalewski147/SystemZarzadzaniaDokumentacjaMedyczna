@@ -40,6 +40,6 @@ public class Recepta extends Dokument {
     //  Implementacja metody abstrakcyjnej pobierzOpis() klasy Dokument
     @Override
     public String pobierzOpis() {
-        return "";
+        return "Data waznosci: " + dataWaznosci.toString() + "\nLeki: " + leki + "\nDawkowanie: " + dawkowanie;
     }
 }
